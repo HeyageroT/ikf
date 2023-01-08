@@ -7,8 +7,10 @@ sudo dnf -y install fedora-workstation-repositories bash-completion
 sudo dnf config-manager --set-enabled google-chrome
 sudo dnf update
 sudo dnf -y install plasma-desktop plasma-nm bluedevil dolphin konsole kwrite ark spectacle kcalc plasma-discover kde-print-manager kscreen kde-partitionmanager plasma-systemmonitor  
-sudo dnf -y install sddm sddm-kcm sddm-breeze plymouth-kcm google-chrome-stable pciutils plasma-disks kinfocenter kde-connect
+sudo dnf -y install sddm sddm-kcm sddm-breeze plymouth-kcm plymouth-theme-breeze google-chrome-stable pciutils plasma-disks kinfocenter kde-connect
 sudo sed -i 15i\ 'InputMethod=' /etc/sddm.conf
+sudo sed -i '1 s/5/0/' /etc/default/grub
+sudo grub2-mkconfig -o /etc/grub2.cfg
 sudo systemctl enable sddm
 sudo systemctl enable bluetooth
 sudo systemctl set-default graphical.target
